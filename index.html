@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>reveal.js</title>
+	<title>刘俊2021个人总结</title>
 
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
@@ -13,6 +13,11 @@
 
 	<!-- Theme used for syntax highlighted code -->
 	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.2/echarts.min.js"
+		integrity="sha512-ivdGNkeO+FTZH5ZoVC4gS4ovGSiWc+6v60/hvHkccaMN2BXchfKdvEZtviy5L4xSpF8NPsfS0EVNSGf+EsUdxA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 
 <body>
@@ -31,6 +36,1055 @@
 				</h4>
 			</section>
 
+			<section>
+				<div id="important_project" style="width: 1200px; height: 800px;"></div>
+				<script>
+					// 基于准备好的dom，初始化echarts实例
+					var myChart = echarts.init(document.getElementById('important_project'));
+					// 绘制图表
+					//圆圈和三角图标
+					var BLUEC = '/asset/get/s/data-1621845955864-3axUFqMm9.png';
+					var BLUET = '/asset/get/s/data-1621845950102-7gUZRwc_3.png';
+					var ORANGEC = '/asset/get/s/data-1621845936770-R15Ud_DLZ.png';
+					var ORANGET = '/asset/get/s/data-1621845872303-YqLesHwVD.png';
+
+					let start_ = '2020-09-1 00:00:00',
+						end_ = '2021-12-31 00:00:00'; //时间这里是写死固定值，可根据实际需求更改，比如获取当前时间的前三个月及后三个月
+					let allinfo = []; //所有list集合
+					let yAxisData_plant = []; //版本名
+					let chartsdata = [
+						//图表数据
+						[
+							{
+								product: '华新水泥',
+								list: [
+									{
+										pre_package_time: '2021-02-1 00:00:00',
+										pre_release_time: '2021-03-1 00:00:00',
+										release_version: ' ',
+										id: 3,
+									},
+								],
+							},
+						],
+						[
+							{
+								product: ' B',
+								list: [
+									{
+										db_version: '  B',
+										pre_package_time: '2021-03-5 00:00:00',
+										pre_release_time: '2021-03-20 00:00:00',
+										release_version: '0',
+										re_package_time: '2021-03-10 00:00:00',
+										re_release_time: '2021-03-22 00:00:00',
+										id: 3,
+										remark: '20',
+									},
+								],
+							},
+						],
+						[
+							{
+								product: 'C',
+								list: [
+									{
+										db_version: 'C ',
+										pre_package_time: '2021-06-23 00:00:00',
+										pre_release_time: '2021-07-07 00:00:00',
+										release_version: '1',
+										re_package_time: '2021-06-23 00:00:00',
+										re_release_time: '2021-07-13 00:00:00',
+										id: 9,
+										remark: '0',
+									},
+								],
+							},
+						],
+						[
+							{
+								product: 'D ',
+								list: [
+									{
+										db_version: 'D ',
+										pre_package_time: '2020-12-2 00:00:00',
+										pre_release_time: '2020-12-22 00:00:00',
+										release_version: '0',
+										re_release_time: '2020-12-2 00:00:00',
+										re_package_time: '2020-12-22 00:00:00',
+										id: 14,
+										remark: '90',
+									},
+								],
+							},
+						],
+					];
+
+					let seriesData = [],
+						RealData = [],
+						newBase = [],
+						newBlock = []; //时间，实际时间，标线，时间区域
+					chartsdata.length > 0
+						? chartsdata.map((item, index) => {
+							yAxisData_plant.push(item[0].product);
+							item[0].list.length > 0
+								? item[0].list.map((listItem) => {
+									allinfo.push(listItem);
+									let startTime = new Date(
+										listItem.pre_package_time.replace('00:00:00', '12:00:00').replace(/-/g, '/')
+									).getTime();
+									let endTime = new Date(listItem.pre_release_time.replace('00:00:00', '12:00:00').replace(/-/g, '/')).getTime();
+									let realstartTime = listItem.re_package_time
+										? new Date(listItem.re_package_time.replace('00:00:00', '12:00:00').replace(/-/g, '/')).getTime()
+										: '';
+									let realendTime = listItem.re_release_time
+										? new Date(listItem.re_release_time.replace('00:00:00', '12:00:00').replace(/-/g, '/')).getTime()
+										: '';
+									seriesData.push({
+										//时间
+										name: listItem.release_version,
+										value: [index, startTime, endTime],
+										itemStyle: {
+											normal: {
+												color: '#ff833b',
+											},
+										},
+									});
+									RealData.push({
+										//实际时间
+										name: listItem.release_version,
+										value: [index, realstartTime, realendTime],
+										itemStyle: {
+											normal: {
+												color: '#2194ff',
+											},
+										},
+									});
+								})
+								: null;
+						})
+						: null;
+
+					option = {
+						title: {
+							left: 'center',
+							top: '15%',
+							text: '本年重要项目：5个',
+						},
+						color: ['#ff833b', '#2194ff'],
+						legend: {
+							data: ['时间'],
+							tooltip: {
+								show: true,
+							},
+							top: '20%',
+							itemWidth: 15,
+							itemHeight: 15,
+							textStyle: {
+								fontSize: 16,
+								fontFamily: 'Microsoft YaHei',
+							},
+							itemGap: 120,
+							padding: 5,
+						},
+						tooltip: {
+							formatter: function (params) {
+								if (params.componentType != 'markLine' && params.componentType != 'markArea') {
+									var res = params.name + '<br/>';
+									res +=
+										'计划冻结时间：' +
+										allinfo[params.dataIndex].pre_package_time.split(' ')[0].replace(/-/g, '/') +
+										'&nbsp;' +
+										'<br/>' +
+										'计划发布时间：' +
+										allinfo[params.dataIndex].pre_release_time.split(' ')[0].replace(/-/g, '/') +
+										'&nbsp;' +
+										'<br/>' +
+										'实际冻结时间：' +
+										allinfo[params.dataIndex].re_package_time.split(' ')[0].replace(/-/g, '/') +
+										'&nbsp;' +
+										'<br/>' +
+										'实际发布时间：' +
+										allinfo[params.dataIndex].re_release_time.split(' ')[0].replace(/-/g, '/') +
+										'&nbsp;';
+									return res;
+								} else if (params.componentType != 'markArea') {
+									let time = new Date(params.value);
+									let texts = [time.getFullYear(), time.getMonth() + 1, time.getDate()].join('/');
+									var str = '时间：' + `${texts}`;
+									return str;
+									r;
+								} else {
+									let index = params.dataIndex; //标记区域 下标
+									var str = '封网时间：' + '2021-05-05 ~ 2021-05-25';
+									return str;
+								}
+							},
+							textStyle: {
+								align: 'left',
+							},
+						},
+						grid: {
+							top: '30%',
+							left: '10%',
+							right: '10%',
+							bottom: '30%',
+						},
+						xAxis: {
+							type: 'time',
+							min: new Date(start_).getTime(), //x轴刻度最小值
+							max: new Date(end_).getTime(), //x轴刻度最大值
+							interval: (new Date(end_).getTime() - new Date(start_).getTime()) / 12, //x轴 强制设置坐标轴分割间隔
+							position: 'top', //x 轴的位置
+							splitNumber: 12, //坐标轴的分割段数
+							axisLabel: {
+								//坐标轴名称显示 样式及文案
+								show: true,
+								textStyle: { color: '#000' },
+								interval: 0,
+								margin: 20,
+								fontSize: 10,
+								formatter: function (value, index) {
+									let date = new Date(value);
+									let texts = [date.getFullYear(), date.getMonth() + 1, date.getDate()].join('/');
+									return texts;
+								},
+							},
+							axisLine: { show: true }, //是否显示坐标轴轴线。
+							splitLine: {
+								//坐标轴在 grid 区域中的分隔线
+								show: true, //是否显示分隔线
+								lineStyle: { color: 'rgba(0,0,0,0.2)', type: 'dashed' }, //样式：网格线
+							},
+						},
+						yAxis: {
+							axisLine: {
+								onZero: false,
+								show: true, //是否显示坐标轴轴线。
+							},
+							axisLabel: {
+								show: true,
+								textStyle: { color: '#000' },
+								fontSize: 14,
+							},
+							splitLine: {
+								show: true,
+								lineStyle: { color: 'rgba(0,0,0,0.2)', type: 'dashed' },
+							},
+							inverse: true, //是否是反向坐标轴
+							data: yAxisData_plant,
+						},
+						series: [
+							{
+								name: '时间',
+								type: 'custom',
+								label: {
+									normal: {
+										show: true,
+										position: 'bottom',
+										padding: [18, 0, 0, 0],
+										formatter: function (value) {
+											let val = allinfo[value.dataIndex].remark ? allinfo[value.dataIndex].remark.split(',').join('\n') : '';
+											let texts = [`{fragment1|${val}}`].join('\n');
+											return texts;
+										},
+										color: '#000',
+										fontSize: 11,
+										rich: {
+											fragment1: {
+												lineHeight: 14,
+												align: 'center',
+												color: '#000',
+											},
+										},
+									},
+								},
+								renderItem: function (params, api) {
+									let categoryIndex = api.value(0);
+									let start = api.coord([api.value(1), categoryIndex]);
+									let end = api.coord([api.value(2), categoryIndex]);
+									let height = api.size([0, 1])[1] * 0.03;
+									let rectShape = echarts.graphic.clipRectByRect(
+										{
+											x: start[0],
+											y: start[1] - 15,
+											width: end[0] - start[0],
+											height: 5,
+										},
+										{
+											x: params.coordSys.x,
+											y: params.coordSys.y,
+											width: params.coordSys.width,
+											height: params.coordSys.height,
+										}
+									);
+
+									const result = rectShape && {
+										type: 'rect',
+										shape: rectShape,
+										style: api.style(),
+										styleEmphasis: {
+											textStroke: null,
+										},
+									};
+									return result;
+								},
+								encode: {
+									x: [1, 2],
+									y: 0,
+								},
+								data: seriesData,
+							},
+							{
+								name: '时间',
+								type: 'custom',
+								label: {
+									normal: {
+										show: true,
+										position: 'top',
+										padding: [0, 0, 10, 0],
+										formatter: function (value, index) {
+											let texts = `{term|${value.name}}`;
+											return texts;
+										},
+										color: '#000',
+										rich: {
+											term: {
+												align: 'center',
+												fontSize: 16,
+												color: 'rgb(199,86,83)',
+											},
+										},
+									},
+								},
+								renderItem: function (params, api) {
+									let categoryIndex = api.value(0);
+									let start = api.coord([api.value(1), categoryIndex]);
+									let end = api.coord([api.value(2), categoryIndex]);
+									let height = api.size([0, 1])[1] * 0.03;
+									let rectShape = echarts.graphic.clipRectByRect(
+										{
+											x: start[0],
+											y: start[1] - 15,
+											width: end[0] - start[0],
+											height: 4,
+										},
+										{
+											x: params.coordSys.x,
+											y: params.coordSys.y,
+											width: params.coordSys.width,
+											height: params.coordSys.height,
+										}
+									);
+
+									const result = rectShape && {
+										type: 'rect',
+										shape: rectShape,
+										style: api.style(),
+										styleEmphasis: {
+											textStroke: null,
+										},
+									};
+									return result;
+								},
+								encode: {
+									x: [1, 2],
+									y: 0,
+								},
+								data: seriesData,
+								markLine: {
+									data: newBase,
+								},
+								markArea: {
+									itemStyle: {
+										color: 'rgba(200, 200, 200, 0.4)',
+									},
+									data: newBlock, //封网时间
+								},
+							},
+							{
+								name: '时间', //这里可能有人会比较困惑 怎么有多个时间  这个是我为了在图中显示对应的时间及一些备注信息而添加的
+								type: 'custom', //因为没有找到对应的好一点的方法解决  而用了这种形式
+								label: {
+									normal: {
+										show: true,
+										position: 'left',
+										padding: [0, -5, 0, 0],
+										formatter: function (value) {
+											let date = new Date(value.data.value[1]);
+											let texta = [date.getMonth() + 1, date.getDate()].join('/');
+											let newstr = `{fragment1|${texta}}{one|}`;
+											return newstr;
+										},
+										rich: {
+											fragment1: {
+												color: '#000',
+												fontSize: 10,
+												padding: [20, -25, 0, 0],
+											},
+											one: {
+												fontSize: 8,
+												backgroundColor: {
+													image: ORANGET,
+												},
+											},
+										},
+									},
+								},
+								renderItem: function (params, api) {
+									let categoryIndex = api.value(0);
+									let start = api.coord([api.value(1), categoryIndex]);
+									let end = api.coord([api.value(2), categoryIndex]);
+									let height = api.size([0, 1])[1] * 0.03;
+									let rectShape = echarts.graphic.clipRectByRect(
+										{
+											x: start[0],
+											y: start[1] - 15,
+											width: end[0] - start[0],
+											height: 4,
+										},
+										{
+											x: params.coordSys.x,
+											y: params.coordSys.y,
+											width: params.coordSys.width,
+											height: params.coordSys.height,
+										}
+									);
+
+									const result = rectShape && {
+										type: 'rect',
+										shape: rectShape,
+										style: api.style(),
+										styleEmphasis: {
+											textStroke: null,
+										},
+									};
+									return result;
+								},
+								encode: {
+									x: [1, 2],
+									y: 0,
+								},
+								data: seriesData,
+							},
+							{
+								name: '时间',
+								type: 'custom',
+								label: {
+									normal: {
+										show: true,
+										position: 'right',
+										padding: [0, 0, 0, -5],
+										formatter: function (value) {
+											let date_a = new Date(value.data.value[2]);
+											let textb = [date_a.getMonth() + 1, date_a.getDate()].join('/');
+											let newstr = `{one|}{fragment1|${textb}}`;
+											return newstr;
+										},
+										rich: {
+											fragment1: {
+												color: '#000',
+												fontSize: 10,
+												padding: [20, 0, 0, -25],
+											},
+											one: {
+												fontSize: 8,
+												backgroundColor: {
+													image: ORANGEC,
+												},
+											},
+										},
+									},
+								},
+								renderItem: function (params, api) {
+									let categoryIndex = api.value(0);
+									let start = api.coord([api.value(1), categoryIndex]);
+									let end = api.coord([api.value(2), categoryIndex]);
+									let height = api.size([0, 1])[1] * 0.03;
+									let rectShape = echarts.graphic.clipRectByRect(
+										{
+											x: start[0],
+											y: start[1] - 15,
+											width: end[0] - start[0],
+											height: 4,
+										},
+										{
+											x: params.coordSys.x,
+											y: params.coordSys.y,
+											width: params.coordSys.width,
+											height: params.coordSys.height,
+										}
+									);
+
+									const result = rectShape && {
+										type: 'rect',
+										shape: rectShape,
+										style: api.style(),
+										styleEmphasis: {
+											textStroke: null,
+										},
+									};
+									return result;
+								},
+								encode: {
+									x: [1, 2],
+									y: 0,
+								},
+								data: seriesData,
+							},
+							{
+								name: '实际时间',
+								type: 'custom',
+								label: {
+									normal: {
+										show: true,
+										position: 'left',
+										padding: [0, -5, 0, 0],
+										formatter: function (value) {
+											let date = new Date(value.data.value[1]);
+											let texta = [date.getMonth() + 1, date.getDate()].join('/');
+											let newstr = `{fragment1|${texta}}{one|}`;
+											return newstr;
+										},
+										rich: {
+											fragment1: {
+												color: '#000',
+												fontSize: 10,
+												padding: [0, -25, 20, 0],
+											},
+											one: {
+												fontSize: 8,
+												backgroundColor: {
+													image: BLUET,
+												},
+											},
+										},
+									},
+								},
+								renderItem: function (params, api) {
+									let categoryIndex = api.value(0);
+									let start = api.coord([api.value(1), categoryIndex]);
+									let end = api.coord([api.value(2), categoryIndex]);
+									let height = api.size([0, 1])[1] * 0.03;
+									let rectShape = echarts.graphic.clipRectByRect(
+										{
+											x: start[0],
+											y: start[1] - 5,
+											width: end[0] - start[0],
+											height: 4,
+										},
+										{
+											x: params.coordSys.x,
+											y: params.coordSys.y,
+											width: params.coordSys.width,
+											height: params.coordSys.height,
+										}
+									);
+
+									const result = rectShape && {
+										type: 'rect',
+										shape: rectShape,
+										style: api.style(),
+										styleEmphasis: {
+											textStroke: null,
+										},
+									};
+									return result;
+								},
+								encode: {
+									x: [1, 2],
+									y: 0,
+								},
+								data: RealData,
+							},
+							{
+								name: '实际时间',
+								type: 'custom',
+								label: {
+									normal: {
+										show: true,
+										position: 'right',
+										padding: [0, 0, 0, -5],
+										formatter: function (value) {
+											let date_a = new Date(value.data.value[2]);
+											let textb = [date_a.getMonth() + 1, date_a.getDate()].join('/');
+											let newstr = `{one|}{fragment1|${textb}}`;
+											return newstr;
+										},
+										rich: {
+											fragment1: {
+												color: '#000',
+												fontSize: 10,
+												padding: [0, 0, 20, -25],
+											},
+											one: {
+												fontSize: 8,
+												backgroundColor: {
+													image: BLUEC,
+												},
+											},
+										},
+									},
+								},
+								renderItem: function (params, api) {
+									let categoryIndex = api.value(0);
+									let start = api.coord([api.value(1), categoryIndex]);
+									let end = api.coord([api.value(2), categoryIndex]);
+									let height = api.size([0, 1])[1] * 0.03;
+									let rectShape = echarts.graphic.clipRectByRect(
+										{
+											x: start[0],
+											y: start[1] - 5,
+											width: end[0] - start[0],
+											height: 4,
+										},
+										{
+											x: params.coordSys.x,
+											y: params.coordSys.y,
+											width: params.coordSys.width,
+											height: params.coordSys.height,
+										}
+									);
+
+									const result = rectShape && {
+										type: 'rect',
+										shape: rectShape,
+										style: api.style(),
+										styleEmphasis: {
+											textStroke: null,
+										},
+									};
+									return result;
+								},
+								encode: {
+									x: [1, 2],
+									y: 0,
+								},
+								data: RealData,
+							},
+						],
+					};
+					myChart.setOption(option);
+				</script>
+			</section>
+
+			<section>
+				<div id="projects" style="width: 1200px; height: 800px;"></div>
+				<script>
+					// 基于准备好的dom，初始化echarts实例
+					var myChart2 = echarts.init(document.getElementById('projects'));
+					// 绘制图表
+					let colorList = [
+						'#CF4645',
+						'#B580B2',
+						'#29008A',
+						'#146A90',
+						'#8956FF',
+						'#70C9A8',
+						'#bfbfbf',
+						'#595959',
+						'#40a9ff',
+						'#1890ff',
+						'#ffd666',
+						'#ffc53d',
+						'#ffc53d',
+						'#ffc069',
+						'#ffa940',
+						'#fa8c16',
+						'#eccbd9',
+						'#ffadad',
+						'#ff6392',
+						'#ffc09f',
+						'#ffcb77',
+						'#ffe066',
+						'#ffd53e',
+						'#ffda3d',
+						'#adf7b6',
+						'#a0e8af',
+						'#80ed99',
+						'#07beb8',
+						'#17c3b2',
+						'#48cae4',
+						'#97d2fb',
+						'#83bcff',
+						'#91e5f6',
+						'#9381ff',
+					];
+					let colorListLen = colorList.length;
+					let fontSizeList = [
+						12,
+						12.5,
+						13,
+						13.5,
+						14,
+						14.5,
+						15,
+						15.5,
+						16,
+						16.5,
+						17,
+						17.5,
+						18,
+						18.5,
+						19,
+						19.5,
+						20,
+						20.5,
+						21,
+						22,
+						23,
+						24,
+					];
+					let fontSizeListLen = fontSizeList.length;
+					let customLabel = {
+						color: colorList[Math.floor(Math.random() * colorListLen)],
+						fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+					};
+					let bgColor = '#fffcf9';
+					let canDraggable = true;
+					const option = {
+						backgroundColor: 'white',
+						color: ['#37A2DA', '#32C5E9', '#67E0E3'],
+						title: {
+							show: true,
+							text: '全年做过的项目：24+ 个',
+							top: '10%',
+							x: 'center',
+						},
+						toolbox: {
+							show: true,
+							feature: {
+								// dataView: {readOnly: false},
+								// magicType: {type: ['line', 'bar']},
+								restore: {},
+								// saveAsImage: {}
+							},
+						},
+						itemStyle: {
+							color: bgColor,
+						},
+						grid: {
+							top: '30%',
+							left: '30%',
+							bottom: '30%',
+							right: '50%',
+						},
+						series: [
+							{
+								type: 'graph',
+								layout: 'force',
+								force: {
+									repulsion: 200,
+									edgeLength: 10,
+								},
+								roam: 'scale',
+								symbol: '',
+								symbolSize: 0,
+								label: {
+									show: true,
+									color: 'auto',
+									fontSize: 50,
+								},
+								data: [
+									{
+										name: '听音乐',
+										value: 2,
+										draggable: canDraggable,
+										itemStyle: {
+											color: bgColor,
+										},
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '看电影',
+										value: 12,
+										draggable: canDraggable,
+										itemStyle: {
+											color: bgColor,
+										},
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '跑步',
+										value: 22,
+										draggable: canDraggable,
+										itemStyle: {
+											color: bgColor,
+										},
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '瑜伽',
+										value: 42,
+										draggable: canDraggable,
+										itemStyle: {
+											color: bgColor,
+										},
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '发呆',
+										value: 52,
+										draggable: canDraggable,
+										itemStyle: {
+											color: bgColor,
+										},
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '阅读',
+										value: 62,
+										draggable: canDraggable,
+										itemStyle: {
+											color: bgColor,
+										},
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '唱歌',
+										value: 72,
+										draggable: canDraggable,
+										itemStyle: {
+											color: bgColor,
+										},
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '跳舞',
+										value: 72,
+										draggable: canDraggable,
+										itemStyle: {
+											color: bgColor,
+										},
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '追星',
+										value: 72,
+										draggable: canDraggable,
+										itemStyle: {
+											color: bgColor,
+										},
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '看星星',
+										value: 72,
+										draggable: canDraggable,
+										// itemStyle: {
+										//     color: bgColor
+										// },
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '看月亮',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '吃汉堡',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '做早餐',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '爬山',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '旅行',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '喝奶茶',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '买衣服',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '理财',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '洗衣服',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '收纳',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '早起',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '熬夜',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '追剧',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '逛街',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '敲代码',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '创作',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '做梦',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '悲伤',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+									{
+										name: '开心',
+										value: 72,
+										draggable: canDraggable,
+										label: {
+											color: colorList[Math.floor(Math.random() * colorListLen)],
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
+										},
+									},
+								],
+							},
+						],
+					};
+					myChart2.setOption(option);
+				</script>
+			</section>
+
 			<section data-markdown>
 				<script type="text/template">
 				#### 刘俊：前端开发
@@ -38,6 +1092,25 @@
 				- 2021.6 毕业于华东理工大学 财务管理、计算机科学与技术（第二专业辅修）
 				- CMA 管理会计师
 				- 爱好：手工、烹饪🍳、耐力运动（骑行、跑步）、乒乓球、羽毛球
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+				## 2020年的概述
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+				## 2021年：
+				- 自定义JS开发贡献突出
+					- 在V1首次引入Vue
+					- 参加项目最多（重点项目5个，总项目含demo20+个）
+						- 麦当劳 宝胜 百果园 GLP 华新水泥
+					- 绘制的仪表盘广受好评
+					- 可复用的ECharts（低代码、1行代码画一个ECharts）
+				- 前端专业知识突飞猛进
 				</script>
 			</section>
 
@@ -82,7 +1155,8 @@
 				| 基金管理Demo | 电子表格Spread JS自定义功能                |
 				| 租赁财务     | 制作5+ 仪表盘                             |
 				| ERM-企业风险管理 | 制作一些仪表盘、电子表格Spread JS自定义功能 |
-				
+				| 对账demo | 制作一些仪表盘、电子表格Spread JS自定义功能 |
+				| 华新水泥 | 制作一些仪表盘、电子表格Spread JS自定义功能 |
 				
 				### 华新水泥
 				
@@ -94,45 +1168,11 @@
 				| 项目名称       | 主要工作内容                                                           |
 				| :------------ |:--------------------------------------------------------------------:|
 				| 盒马POC        | 编写VBA，把客户数据进行校验和筛选                                         |
-				| /             | [cfs 自定义JS 文档](https://proinnova.yuque.com/vnf5h6/tmgyfo/fadrs1)  |
+				| /             | [cfs自定义JS文档](https://proinnova.yuque.com/vnf5h6/tmgyfo/fadrs1)  |
 				| /             | [EasyView的使用文档](https://easyview.seepln.com)                      |
 				| /             | [共享中心的使用文档](https://proinnova.yuque.com/phyhmv/xmbd77/vy6oyh)  |
 				
-				## 做过的仪表盘示例
-				### 华新水泥
-				![华新水泥](../images/huaxin.png)
-				
-				### 麦当劳
-				![麦当劳](../images/mcd.png)
-				![麦当劳](../images/mcd2.png)
-				
-				### 百果园
-				![百果园](../images/pagoda.png)
-				
-				### 地产营销demo
-				![地产营销demo](../images/dichan.png)
-				
-				### 大地项目现金流查询表
-				![大地项目现金流查询表](../images/dadi.png)
-				
-				### 海通证券
-				![海通证券](../images/haitong.png)
-				
-				### 融资计划
-				![融资计划](../images/rongzi.png)
-				
-				### 人力成本预算
-				![人力成本预算](../images/hrbudget.png)
-				
-				### ERM-企业风险管理
-				![ERM](../images/ERM.png)
-				![ERM](../images/ERM2.png)
-				
-				### 人力资源
-				![人力资源](../images/hr.png)
-				![人力资源](../images/hr2.png)
-				![人力资源](../images/hr3.png)
-				![人力资源](../images/hr4.png)
+
 				</script>
 			</section>
 
@@ -143,6 +1183,41 @@
 			</section>
 
 			<section>
+				## 做过的仪表盘示例
+				### 华新水泥
+				![华新水泥](../images/huaxin.png)
+
+				### 麦当劳
+				![麦当劳](../images/mcd.png)
+				![麦当劳](../images/mcd2.png)
+
+				### 百果园
+				![百果园](../images/pagoda.png)
+
+				### 地产营销demo
+				![地产营销demo](../images/dichan.png)
+
+				### 大地项目现金流查询表
+				![大地项目现金流查询表](../images/dadi.png)
+
+				### 海通证券
+				![海通证券](../images/haitong.png)
+
+				### 融资计划
+				![融资计划](../images/rongzi.png)
+
+				### 人力成本预算
+				![人力成本预算](../images/hrbudget.png)
+
+				### ERM-企业风险管理
+				![ERM](../images/ERM.png)
+				![ERM](../images/ERM2.png)
+
+				### 人力资源
+				![人力资源](../images/hr.png)
+				![人力资源](../images/hr2.png)
+				![人力资源](../images/hr3.png)
+				![人力资源](../images/hr4.png)
 				一些仪表盘照片 Spread.js,以及华新水泥work.jun.one/ifinance
 			</section>
 
@@ -159,13 +1234,13 @@
 				<script type="text/template">
 				## 本年进步
 				- React.js: Hooks, Router, Redux... 
-				- Vue.js
+				- Vue.js: Vuex
 				- Ant Design, Element UI
 				- CSS
 				- JavaScript: ES6
 				- TypeScript -> JavaScript
 				- Spread.js: 电子表格
-				- `git`、`npm`(`pnpm`, `yarn`)
+				- 包管理工具：`git`、`npm`(`pnpm`, `yarn`)
 				</script>
 			</section>
 
@@ -179,20 +1254,29 @@
 					</script>
 			</section>
 
-			<section>
+			<section data-markdown>
 				<script type="text/template">
 					## 新一年的自我要求
+					- 把自定义JS玩出花
+					- 做更多有挑战性的前端项目和工作
+					- 视野和好奇心：WebGL ThreeJS
+					- 对业务需求的判断力、执行力、细心
+					- 自我调整、自我适应、自我驱动
+
 				</script>
-				<p>做更多有挑战性的前端项目和工作</p>
-				<p>对业务需求的判断力、视野和好奇心、执行力、细心</p>
-				<p>自我调整、自我适应、自我驱动</p>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+					### 你每天怎么做，你一年就怎么做。
+				</script>
 			</section>
 
 			<section data-markdown>
 				<script type="text/template">
 					## 感谢各位领导和伙伴聆听👂！
 					- 刘俊
-					- powered by Reveal.js
+					- 本演示使用[reveal.js](https://revealjs.com/)编写
 					</script>
 			</section>
 		</div>
@@ -208,6 +1292,7 @@
 		// - https://revealjs.com/config/
 		Reveal.initialize({
 			hash: true,
+			controlsLayout: 'edges',
 
 			// Learn about plugins: https://revealjs.com/plugins/
 			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
