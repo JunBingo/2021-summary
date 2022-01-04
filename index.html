@@ -16,8 +16,6 @@
 
 	<script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.2.2/echarts.min.js"></script>
 
-
-
 </head>
 
 <body>
@@ -705,78 +703,39 @@
 				<script type="text/template">
 				## 我的2021
 				- 自定义JS开发贡献突出
-					- 参加项目最多（重点项目5个，总项目和demo24+个）
-						- 麦当劳 宝胜 百果园 GLP 华新水泥
-						- 在V1首次引入Vue
-					- 绘制的仪表盘广受好评
-					- 可复用的ECharts（低代码、1行代码画一个ECharts）
+					- 参加项目是最多的之一
+						- 重点项目5个：麦当劳 宝胜 百果园 GLP 华新水泥
+						- 总项目和demo 25 余个
+					- 在V1环境中引入Vue框架进行仪表盘开发，既加快开发效率又美化界面
+					- 可复用的ECharts
+						- 低代码、1行代码画一个ECharts
+					- 建立电子表格知识库和ECharts样例集
 				- 前端专业知识突飞猛进
 				</script>
 			</section>
 
-			<section>
-				<h3>V1开发项目</h3>
-				<table style="border-collapse: separate; border-spacing:10px 10px ;font-size: 21px">
-					<tr>
-						<th>重点项目</th>
-						<th>项目</th>
-						<th style="width: 23%;">项目</th>
-						<th style="width: 23%;">项目</th>
-					</tr>
-					<tr>
-						<td>百果园（30 + 份电子表格开发）</td>
-						<td>人力成本预算</td>
-						<td>重庆百货租赁系统</td>
-						<td>地产营销费控 Demo</td>
-					</tr>
-					<tr>
-						<td>麦当劳（仪表盘，老代码优化）</td>
-						<td>融资计划</td>
-						<td>阅文集团</td>
-						<td>零售门店损益 Demo</td>
-					</tr>
-					<tr>
-						<td>GLP（10 + 份电子表格）</td>
-						<td>新华保险</td>
-						<td>租赁2.0</td>
-						<td>零售门店损益 Demo</td>
-					</tr>
-					<tr>
-						<td>金地POC（20 + 份电子表格）</td>
-						<td>cfs自定义JS文档</td>
-						<td><a href="https://easyview.seepln.com">EasyView使用文档</a></td>
-						<td><a href="https://proinnova.yuque.com/phyhmv/xmbd77/vy6oyh">共享中心使用文档</a></td>
-					</tr>
-					<tr>
-						<td>盒马POC（编写VBA）</td>
-					</tr>
-				</table>
-			</section>
-
 			<section data-markdown>
 				<script type="text/template">
-				## V2
-
-				| 重点项目（主要工作内容）    | 项目          | 项目          | 项目            |
-				| :---------------------- |:------------ |:------------  |:-------------  |
-				| [华新水泥](http://work.jun.one/ifinance)（ECharts和电子表格）｜锦江人力预算｜开店测算 ｜ 基金管理Demo｜
-				| ERM-企业风险管理
-				| 项目名称       | 主要工作内容                            |
-				| :------------ |:-------------------------------------:|
-				| 零售门店损益表Demo | 电子表格Spread JS自定义功能           |
-				|  | 少数电子表格Spread JS自定义功能     |
-				| 先胜内部项目管理 | 电子表格Spread JS自定义功能             |
-				|  | 电子表格Spread JS自定义功能                |
-				| 租赁财务     | 制作5+ 仪表盘                             |
-		
-				| 对账demo | 制作一些仪表盘、电子表格Spread JS自定义功能 |
-			
-
+				## 本年进步
+				- React.js: Hooks, Router, Redux... 
+				- Vue.js
+				- Ant Design, Element UI
+				- CSS
+				- JavaScript: ES6
+				- TypeScript -> JavaScript
+				- Spread.js: 电子表格
+				- 包管理工具：`git`、`npm`(`pnpm`, `yarn`)
 				</script>
 			</section>
 
 			<section>
-				<div id="projects" style="width: 1200px; height: 800px;"></div>
+				<h5>建立电子表格知识库（spreadjs.yuque.com）</h5>
+				<img src="./images/spreadjs.png" alt="">
+			</section>
+
+			<section>
+				<div id="projects" style="width: 1000px; height: 800px; margin-right: 500px;">
+				</div>
 				<script>
 					// 基于准备好的dom，初始化echarts实例
 					var myChart2 = echarts.init(document.getElementById('projects'));
@@ -855,8 +814,11 @@
 						title: {
 							show: true,
 							text: '全年做过的项目：24+ 个',
-							top: '10%',
+							top: '5%',
 							x: 'center',
+							textStyle: {
+								fontSize: 25
+							}
 						},
 						toolbox: {
 							show: true,
@@ -865,7 +827,7 @@
 								// magicType: {type: ['line', 'bar']},
 								restore: {},
 								// saveAsImage: {}
-							},
+							}
 						},
 						itemStyle: {
 							color: bgColor,
@@ -874,14 +836,14 @@
 							top: '30%',
 							left: '30%',
 							bottom: '30%',
-							right: '50%',
+							right: '30%',
 						},
 						series: [
 							{
 								type: 'graph',
 								layout: 'force',
 								force: {
-									repulsion: 200,
+									repulsion: 250,
 									edgeLength: 10,
 								},
 								roam: 'scale',
@@ -894,115 +856,115 @@
 								},
 								data: [
 									{
-										name: '听音乐',
+										name: '百果园',
 										value: 2,
 										draggable: canDraggable,
 										itemStyle: {
-											color: bgColor,
+											color: bgColor
 										},
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '看电影',
+										name: '人力成本预算',
 										value: 12,
 										draggable: canDraggable,
 										itemStyle: {
-											color: bgColor,
+											color: bgColor
 										},
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '跑步',
+										name: '重庆百货租赁系统',
 										value: 22,
 										draggable: canDraggable,
 										itemStyle: {
-											color: bgColor,
+											color: bgColor
 										},
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '瑜伽',
+										name: '地产营销费控 Demo',
 										value: 42,
 										draggable: canDraggable,
 										itemStyle: {
-											color: bgColor,
+											color: bgColor
 										},
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '发呆',
+										name: '麦当劳CapEx',
 										value: 52,
 										draggable: canDraggable,
 										itemStyle: {
-											color: bgColor,
+											color: bgColor
 										},
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '阅读',
+										name: '融资计划',
 										value: 62,
 										draggable: canDraggable,
 										itemStyle: {
-											color: bgColor,
+											color: bgColor
 										},
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '唱歌',
+										name: '阅文集团',
 										value: 72,
 										draggable: canDraggable,
 										itemStyle: {
-											color: bgColor,
+											color: bgColor
 										},
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '跳舞',
+										name: '零售门店损益 Demo',
 										value: 72,
 										draggable: canDraggable,
 										itemStyle: {
-											color: bgColor,
+											color: bgColor
 										},
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '追星',
+										name: 'GLP',
 										value: 72,
 										draggable: canDraggable,
 										itemStyle: {
-											color: bgColor,
+											color: bgColor
 										},
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '看星星',
+										name: '新华保险',
 										value: 72,
 										draggable: canDraggable,
 										// itemStyle: {
@@ -1010,181 +972,109 @@
 										// },
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '看月亮',
+										name: '租赁2.0',
 										value: 72,
 										draggable: canDraggable,
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '吃汉堡',
+										name: '东亚银行',
 										value: 72,
 										draggable: canDraggable,
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '做早餐',
+										name: '金地POC',
 										value: 72,
 										draggable: canDraggable,
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '爬山',
+										name: '华新水泥',
 										value: 72,
 										draggable: canDraggable,
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '旅行',
+										name: '基金管理Demo',
 										value: 72,
 										draggable: canDraggable,
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '喝奶茶',
+										name: '开店测算',
 										value: 72,
 										draggable: canDraggable,
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '买衣服',
+										name: '锦江人力预算',
 										value: 72,
 										draggable: canDraggable,
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '理财',
+										name: 'ERM - 企业风险管理',
 										value: 72,
 										draggable: canDraggable,
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '洗衣服',
+										name: '零售门店损益表 Demo',
 										value: 72,
 										draggable: canDraggable,
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '收纳',
+										name: '先胜内部项目管理',
 										value: 72,
 										draggable: canDraggable,
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
 									{
-										name: '早起',
+										name: '对账demo',
 										value: 72,
 										draggable: canDraggable,
 										label: {
 											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
+											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)]
+										}
 									},
-									{
-										name: '熬夜',
-										value: 72,
-										draggable: canDraggable,
-										label: {
-											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
-									},
-									{
-										name: '追剧',
-										value: 72,
-										draggable: canDraggable,
-										label: {
-											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
-									},
-									{
-										name: '逛街',
-										value: 72,
-										draggable: canDraggable,
-										label: {
-											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
-									},
-									{
-										name: '敲代码',
-										value: 72,
-										draggable: canDraggable,
-										label: {
-											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
-									},
-									{
-										name: '创作',
-										value: 72,
-										draggable: canDraggable,
-										label: {
-											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
-									},
-									{
-										name: '做梦',
-										value: 72,
-										draggable: canDraggable,
-										label: {
-											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
-									},
-									{
-										name: '悲伤',
-										value: 72,
-										draggable: canDraggable,
-										label: {
-											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
-									},
-									{
-										name: '开心',
-										value: 72,
-										draggable: canDraggable,
-										label: {
-											color: colorList[Math.floor(Math.random() * colorListLen)],
-											fontSize: fontSizeList[Math.floor(Math.random() * fontSizeListLen)],
-										},
-									},
-								],
+								]
 							},
 						],
 					};
@@ -1192,56 +1082,179 @@
 				</script>
 			</section>
 
+			<section>
+				<h3>V1开发项目</h3>
+				<table style="border-collapse: separate; border-spacing:10px 10px ;font-size: 21px">
+					<tr>
+						<th>项目</th>
+						<th>项目</th>
+						<th style="width: 23%;">项目</th>
+						<th style="width: 23%;">项目</th>
+					</tr>
+					<tr>
+						<td>百果园（30 + 份电子表格开发）</td>
+						<td>人力成本预算</td>
+						<td>重庆百货租赁系统</td>
+						<td>地产营销费控 Demo</td>
+					</tr>
+					<tr>
+						<td>麦当劳（仪表盘，老代码优化）</td>
+						<td>融资计划</td>
+						<td>阅文集团</td>
+						<td>零售门店损益 Demo</td>
+					</tr>
+					<tr>
+						<td>GLP（10 + 份电子表格）</td>
+						<td>新华保险</td>
+						<td>租赁2.0</td>
+						<td>东亚银行</td>
+					</tr>
+					<tr>
+						<td>金地POC（20 + 份电子表格）</td>
+						<td>cfs自定义JS文档</td>
+						<td><a href="https://easyview.seepln.com">EasyView使用文档</a></td>
+						<td><a href="https://proinnova.yuque.com/phyhmv/xmbd77/vy6oyh">共享中心使用文档</a></td>
+					</tr>
+					<tr>
+						<td>盒马POC - VBA</td>
+					</tr>
+				</table>
+			</section>
+
+			<section>
+				<h3>V2开发项目</h3>
+				<table style="border-collapse: separate; border-spacing:10px 10px ;font-size: 21px">
+					<tr>
+						<th>重点项目</th>
+						<th>项目</th>
+						<th style="width: 23%;">项目</th>
+						<th style="width: 23%;">项目</th>
+					</tr>
+					<tr>
+						<td>华新水泥（ECharts和电子表格）</td>
+						<td>基金管理Demo</td>
+						<td>开店测算</td>
+						<td>锦江人力预算</td>
+					</tr>
+					<tr>
+						<td>ERM - 企业风险管理</td>
+						<td>零售门店损益表Demo</td>
+						<td>先胜内部项目管理</td>
+						<td>对账demo</td>
+					</tr>
+				</table>
+			</section>
+
 			<section data-markdown>
 				<script type="text/template">
-					## 成果展示
+					## 工作成果展示
 					</script>
 			</section>
 
 			<section data-markdown>
 				<script type="text/template">
-				### 麦当劳
+				### 电子表格案例：基金管理
+				![基金管理](../images/jijin.png)
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+				### 仪表盘示例：[华新水泥](http://work.jun.one/ifinance)
+				![华新水泥](../images/huaxin.png)
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+				### 仪表盘案例：麦当劳Capex项目
 				![麦当劳](../images/mcd.png)
 				</script>
 			</section>
 
-			<section>
-				## 做过的仪表盘示例
-				### 华新水泥
-				![华新水泥](../images/huaxin.png)
-
-				### 麦当劳
-
-				![麦当劳](../images/mcd2.png)
-
-				### 百果园
+			<section data-markdown>
+				<script type="text/template">
+				### 仪表盘示例：百果园
 				![百果园](../images/pagoda.png)
+				</script>
+			</section>
 
-				### 地产营销demo
+			<section data-markdown>
+				<script type="text/template">
+				### 仪表盘示例：地产营销demo
 				![地产营销demo](../images/dichan.png)
+				</script>
+			</section>
 
-				### 大地项目现金流查询表
+			<section data-markdown>
+				<script type="text/template">
+				### 查询示例：大地项目现金流查询表
+				- 使用Vue.js 与 element UI制作
 				![大地项目现金流查询表](../images/dadi.png)
+				</script>
+			</section>
 
-				### 海通证券
+			<section data-markdown>
+				<script type="text/template">
+				### 仪表盘示例：海通证券
 				![海通证券](../images/haitong.png)
+				</script>
+			</section>
 
-				### 融资计划
+			<section data-markdown>
+				<script type="text/template">
+				### 仪表盘示例：融资计划
 				![融资计划](../images/rongzi.png)
+				</script>
+			</section>
 
-				### 人力成本预算
+			<section data-markdown>
+				<script type="text/template">
+				### 仪表盘示例：人力成本预算
 				![人力成本预算](../images/hrbudget.png)
+				</script>
+			</section>
 
-				### ERM-企业风险管理
+			<section data-markdown>
+				<script type="text/template">
+				### 仪表盘示例：ERM-企业风险管理
 				![ERM](../images/ERM.png)
-				![ERM](../images/ERM2.png)
+				</script>
+			</section>
 
-				### 人力资源
+			<section data-markdown>
+				<script type="text/template">
+				### 仪表盘示例：ERM-企业风险管理
+				![ERM](../images/ERM2.png)
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+				### 仪表盘示例：人力资源
 				![人力资源](../images/hr.png)
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+				### 仪表盘示例：人力资源
 				![人力资源](../images/hr2.png)
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+				### 仪表盘示例：人力资源
 				![人力资源](../images/hr3.png)
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+				### 仪表盘示例：人力资源
 				![人力资源](../images/hr4.png)
-				一些仪表盘照片 Spread.js,以及华新水泥work.jun.one/ifinance
+				</script>
 			</section>
 
 			<section data-markdown>
@@ -1255,37 +1268,22 @@
 
 			<section data-markdown>
 				<script type="text/template">
-				## 本年进步
-				- React.js: Hooks, Router, Redux... 
-				- Vue.js
-				- Ant Design, Element UI
-				- CSS
-				- JavaScript: ES6
-				- TypeScript -> JavaScript
-				- Spread.js: 电子表格
-				- 包管理工具：`git`、`npm`(`pnpm`, `yarn`)
-				</script>
-			</section>
-
-			<section data-markdown>
-				<script type="text/template">
 					## 致谢🙏
-					- 感谢大神领我进门
-					- 感谢领导关心栽培
-					- 感谢生蚝技术指导
-					- 感谢伙伴通力协作
+					- 感恩大神领我进门
+					- 感恩领导关心栽培
+					- 感恩生蚝技术指导
+					- 感恩伙伴通力协作
 					</script>
 			</section>
 
 			<section data-markdown>
 				<script type="text/template">
 					## 新一年的自我要求
-					- 把自定义JS玩出花
+					- 把自定义JS玩出“新花样”
 					- 做更多有挑战性的前端项目和工作
-					- 视野和好奇心：WebGL ThreeJS
+					- 视野和好奇心：WebGL
 					- 对业务需求的判断力、执行力、细心
 					- 自我调整、自我适应、自我驱动
-
 				</script>
 			</section>
 
