@@ -21,7 +21,7 @@
 <body>
 	<div class="reveal">
 		<div class="slides">
-			<!-- 一 -->
+
 			<section>
 				<h1>
 					回眸2021
@@ -34,8 +34,45 @@
 				</h4>
 			</section>
 
+			<section data-markdown>
+				<script type="text/template">
+				#### 刘俊：前端开发
+				- 2020.9 进入丰贺实习
+				- 2021.6 毕业于华东理工大学 财务管理、计算机科学与技术（第二专业辅修）
+				- CMA 管理会计师
+				- 爱好：手工、烹饪🍳、耐力运动（骑行、跑步）、乒乓球、羽毛球
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+				### 2020年的主要工作
+				- 自定义JS开发：
+					- ECharts 数据可视化，制作仪表盘
+					- Spread.js 电子表格二次开发
+					- 业务明细表二次开发 等
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+				## 我的2021
+				- 自定义JS开发贡献突出
+				- 前端专业知识突飞猛进
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+				## 我的2021
+				- 自定义JS开发贡献突出
+					- 参加项目是最多的之一
+						- 重点项目5个：华新水泥 麦当劳 宝胜 百果园 GLP 
+				</script>
+			</section>
+
 			<section>
-				<div id="important_project" style="width: 1200px; height: 800px;"></div>
+				<div id="important_project" style="width: 1000px; height: 900px;"></div>
 				<script>
 					// 基于准备好的dom，初始化echarts实例
 					var myChart = echarts.init(document.getElementById('important_project'));
@@ -46,7 +83,7 @@
 					var ORANGEC = '/asset/get/s/data-1621845936770-R15Ud_DLZ.png';
 					var ORANGET = '/asset/get/s/data-1621845872303-YqLesHwVD.png';
 
-					let start_ = '2020-09-1 00:00:00',
+					let start_ = '2021-1-1 00:00:00',
 						end_ = '2021-12-31 00:00:00'; //时间这里是写死固定值，可根据实际需求更改，比如获取当前时间的前三个月及后三个月
 					let allinfo = []; //所有list集合
 					let yAxisData_plant = []; //版本名
@@ -54,11 +91,11 @@
 						//图表数据
 						[
 							{
-								product: '华新水泥',
+								product: '百果园',
 								list: [
 									{
-										pre_package_time: '2021-02-1 00:00:00',
-										pre_release_time: '2021-03-1 00:00:00',
+										pre_package_time: '2021-2-1 00:00:00',
+										pre_release_time: '2021-8-1 00:00:00',
 										release_version: ' ',
 										id: 3,
 									},
@@ -67,51 +104,52 @@
 						],
 						[
 							{
-								product: ' B',
+								product: '麦当劳',
 								list: [
 									{
-										db_version: '  B',
-										pre_package_time: '2021-03-5 00:00:00',
-										pre_release_time: '2021-03-20 00:00:00',
-										release_version: '0',
-										re_package_time: '2021-03-10 00:00:00',
-										re_release_time: '2021-03-22 00:00:00',
+										pre_package_time: '2021-5-1 00:00:00',
+										pre_release_time: '2021-10-30 00:00:00',
+										release_version: ' ',
 										id: 3,
-										remark: '20',
 									},
 								],
 							},
 						],
 						[
 							{
-								product: 'C',
+								product: 'GLP',
 								list: [
 									{
-										db_version: 'C ',
-										pre_package_time: '2021-06-23 00:00:00',
-										pre_release_time: '2021-07-07 00:00:00',
-										release_version: '1',
-										re_package_time: '2021-06-23 00:00:00',
-										re_release_time: '2021-07-13 00:00:00',
-										id: 9,
-										remark: '0',
+										pre_package_time: '2021-4-1 00:00:00',
+										pre_release_time: '2021-8-31 00:00:00',
+										release_version: ' ',
+										id: 3,
 									},
 								],
 							},
 						],
 						[
 							{
-								product: 'D ',
+								product: '宝胜',
 								list: [
 									{
-										db_version: 'D ',
-										pre_package_time: '2020-12-2 00:00:00',
-										pre_release_time: '2020-12-22 00:00:00',
-										release_version: '0',
-										re_release_time: '2020-12-2 00:00:00',
-										re_package_time: '2020-12-22 00:00:00',
-										id: 14,
-										remark: '90',
+										pre_package_time: '2021-7-1 00:00:00',
+										pre_release_time: '2021-10-1 00:00:00',
+										release_version: ' ',
+										id: 3,
+									},
+								],
+							},
+						],
+						[
+							{
+								product: '华新水泥',
+								list: [
+									{
+										pre_package_time: '2021-10-1 00:00:00',
+										pre_release_time: '2021-12-31 00:00:00',
+										release_version: ' ',
+										id: 3,
 									},
 								],
 							},
@@ -167,7 +205,7 @@
 						title: {
 							left: 'center',
 							top: '15%',
-							text: '本年重要项目：5个',
+							text: '重点项目：5+个',
 						},
 						color: ['#ff833b', '#2194ff'],
 						legend: {
@@ -287,7 +325,7 @@
 											return texts;
 										},
 										color: '#000',
-										fontSize: 11,
+										fontSize: 20,
 										rich: {
 											fragment1: {
 												lineHeight: 14,
@@ -349,7 +387,7 @@
 										rich: {
 											term: {
 												align: 'center',
-												fontSize: 16,
+												fontSize: 28,
 												color: 'rgb(199,86,83)',
 											},
 										},
@@ -668,69 +706,12 @@
 
 			<section data-markdown>
 				<script type="text/template">
-				#### 刘俊：前端开发
-				- 2020.9 进入丰贺实习
-				- 2021.6 毕业于华东理工大学 财务管理、计算机科学与技术（第二专业辅修）
-				- CMA 管理会计师
-				- 爱好：手工、烹饪🍳、耐力运动（骑行、跑步）、乒乓球、羽毛球
-				</script>
-			</section>
-
-			<section data-markdown>
-				<script type="text/template">
-				## 2020年的概述
-				</script>
-			</section>
-
-			<section data-markdown>
-				<script type="text/template">
-				## 主要工作：自定义JS开发
-				- ECharts 数据可视化，制作仪表盘
-				- Spread.js 电子表格二次开发
-				- 业务明细表二次开发 等
-				</script>
-			</section>
-
-			<section data-markdown>
-				<script type="text/template">
-				## 我的2021
-				- 自定义JS开发贡献突出
-				- 前端专业知识突飞猛进
-				</script>
-			</section>
-
-			<section data-markdown>
-				<script type="text/template">
 				## 我的2021
 				- 自定义JS开发贡献突出
 					- 参加项目是最多的之一
 						- 重点项目5个：麦当劳 宝胜 百果园 GLP 华新水泥
 						- 总项目和demo 25 余个
-					- 在V1环境中引入Vue框架进行仪表盘开发，既加快开发效率又美化界面
-					- 可复用的ECharts
-						- 低代码、1行代码画一个ECharts
-					- 建立电子表格知识库和ECharts样例集
-				- 前端专业知识突飞猛进
 				</script>
-			</section>
-
-			<section data-markdown>
-				<script type="text/template">
-				## 本年进步
-				- React.js: Hooks, Router... 
-				- Vue.js
-				- Ant Design, Element UI
-				- CSS
-				- JavaScript: ES6
-				- TypeScript -> JavaScript
-				- Spread.js: 电子表格
-				- 包管理工具：`git`、`npm`(`pnpm`, `yarn`)
-				</script>
-			</section>
-
-			<section>
-				<h5>建立电子表格知识库（spreadjs.yuque.com）</h5>
-				<img src="./images/spreadjs.png" alt="">
 			</section>
 
 			<section>
@@ -1147,6 +1128,48 @@
 
 			<section data-markdown>
 				<script type="text/template">
+				## 我的2021
+				- 自定义JS开发贡献突出
+					- 参加项目是最多的之一
+						- 重点项目5个：麦当劳 宝胜 百果园 GLP 华新水泥
+						- 总项目和demo 25 余个
+					- 首次在V1环境中引入Vue
+					- ECharts：低代码、可复用
+					- 建立电子表格知识库和
+				- 前端专业知识突飞猛进
+				</script>
+			</section>
+
+			<section>
+				<h5>建立电子表格知识库</h5>
+				<span>spreadjs.yuque.com 或 spreadjs.tk</span>
+				<img src="./images/spreadjs.png" alt="">
+			</section>
+
+			<section>
+				<h5>建立ECharts集</h5>
+				<span>echarts.tk</span>
+				<img src="./images/makeapie.png" alt="">
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
+				## 我的2021
+				- 自定义JS开发贡献突出
+				- 前端专业知识突飞猛进
+					- React.js: Hooks, Router... 
+					- Vue.js
+					- Ant Design, Element UI
+					- CSS
+					- JavaScript: ES6 
+					- TypeScript -> JavaScript
+					- Spread.js: 电子表格
+					- 包管理工具：`git`、`npm`(`pnpm`, `yarn`)
+				</script>
+			</section>
+
+			<section data-markdown>
+				<script type="text/template">
 					## 工作成果展示
 					</script>
 			</section>
@@ -1154,115 +1177,85 @@
 			<section data-markdown>
 				<script type="text/template">
 				### 电子表格案例：基金管理
-				![基金管理](../images/jijin.png)
+				![基金管理](./images/jijin.png)
 				</script>
 			</section>
 
 			<section data-markdown>
 				<script type="text/template">
-				### 仪表盘示例：[华新水泥](http://work.jun.one/ifinance)
-				![华新水泥](../images/huaxin.png)
+				### 仪表盘示例：[华新水泥](http://work.jun.one/ifinance/#/SceneTwo/)
+				![华新水泥](./images/huaxin.png)
 				</script>
 			</section>
 
 			<section data-markdown>
 				<script type="text/template">
 				### 仪表盘案例：麦当劳Capex项目
-				![麦当劳](../images/mcd.png)
+				![麦当劳](./images/mcd.png)
 				</script>
 			</section>
 
 			<section data-markdown>
 				<script type="text/template">
 				### 仪表盘示例：百果园
-				![百果园](../images/pagoda.png)
+				![百果园](./images/pagoda.png)
 				</script>
 			</section>
 
 			<section data-markdown>
 				<script type="text/template">
 				### 仪表盘示例：地产营销demo
-				![地产营销demo](../images/dichan.png)
+				![地产营销demo](./images/dichan.png)
 				</script>
 			</section>
 
 			<section data-markdown>
 				<script type="text/template">
 				### 查询示例：大地项目现金流查询表
-				- 使用Vue.js 与 element UI制作
-				![大地项目现金流查询表](../images/dadi.png)
+				- 使用Vue.js 与 Element UI制作
+				![大地项目现金流查询表](./images/dadi.png)
 				</script>
 			</section>
 
 			<section data-markdown>
 				<script type="text/template">
 				### 仪表盘示例：海通证券
-				![海通证券](../images/haitong.png)
+				![海通证券](./images/haitong.png)
 				</script>
 			</section>
 
 			<section data-markdown>
 				<script type="text/template">
 				### 仪表盘示例：融资计划
-				![融资计划](../images/rongzi.png)
+				![融资计划](./images/rongzi.png)
 				</script>
 			</section>
 
 			<section data-markdown>
 				<script type="text/template">
 				### 仪表盘示例：人力成本预算
-				![人力成本预算](../images/hrbudget.png)
+				![人力成本预算](./images/hrbudget.png)
 				</script>
 			</section>
 
 			<section data-markdown>
 				<script type="text/template">
 				### 仪表盘示例：ERM-企业风险管理
-				![ERM](../images/ERM.png)
+				![ERM](./images/ERM.png)
 				</script>
 			</section>
 
 			<section data-markdown>
 				<script type="text/template">
 				### 仪表盘示例：ERM-企业风险管理
-				![ERM](../images/ERM2.png)
+				![ERM](./images/ERM2.png)
 				</script>
 			</section>
 
 			<section data-markdown>
 				<script type="text/template">
 				### 仪表盘示例：人力资源
-				![人力资源](../images/hr.png)
-				</script>
-			</section>
-
-			<section data-markdown>
-				<script type="text/template">
-				### 仪表盘示例：人力资源
-				![人力资源](../images/hr2.png)
-				</script>
-			</section>
-
-			<section data-markdown>
-				<script type="text/template">
-				### 仪表盘示例：人力资源
-				![人力资源](../images/hr3.png)
-				</script>
-			</section>
-
-			<section data-markdown>
-				<script type="text/template">
-				### 仪表盘示例：人力资源
-				![人力资源](../images/hr4.png)
-				</script>
-			</section>
-
-			<section data-markdown>
-				<script type="text/template">
-				## 主要工作：自定义JS开发
-				- `ECharts` 数据可视化，制作仪表盘
-				- `spread.js` 电子表格二次开发
-				- 业务明细表二次开发 等
+				![人力资源](./images/hr2.png)
 				</script>
 			</section>
 
@@ -1297,7 +1290,8 @@
 				<script type="text/template">
 					## 感谢各位领导和伙伴聆听👂！
 					- 刘俊
-						- 本演示使用The HTML Presentation Framework[reveal.js](https://revealjs.com/)编写
+					- 本演示在线地址: [jun.sh/2021-summary](https://jun.sh/2021-summary/)
+					- 本演示使用[reveal.js](https://revealjs.com/)编写
 					</script>
 			</section>
 		</div>
